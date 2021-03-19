@@ -1,0 +1,42 @@
+Index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="add.jsp">
+		Enter num1::<input type="text" name="num1"><br>
+		Enter num2::<input type="text" name="num2"><br>
+		<input type="submit">
+	</form>
+</body>
+</html>
+
+
+
+FirstServlet.java
+
+package com.servlet1;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+@WebServlet("/add")
+public class FirstServlet extends HttpServlet 
+{
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException {
+		int num1=Integer.parseInt(req.getParameter("num1"));
+		int num2=Integer.parseInt(req.getParameter("num2"));
+		req.setAttribute("k",num1+num2);
+		PrintWriter out=res.getWriter();
+	}
+}
